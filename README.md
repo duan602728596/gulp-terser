@@ -8,7 +8,7 @@ $ npm install gulp-uglifyes --save-dev
 ```
 or
 ```
-yarn add gulp-uglifyes --dev
+$ yarn add gulp-uglifyes --dev
 ```
 
 ## How to use
