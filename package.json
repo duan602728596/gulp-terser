@@ -1,0 +1,16 @@
+{
+  "name": "gulp-uglifyes",
+  "version": "0.1.0",
+  "description": "gulp plugin, compressed es6+ code.",
+  "license": "MIT",
+  "author": {
+    "name": "段昊辰",
+    "email": "duanhaochen@126.com",
+    "url": "https://github.com/duan602728596"
+  },
+  "dependencies": {
+    "gulp-util": "^3.0.8",
+    "through2": "^2.0.3",
+    "uglify-es": "^3.1.1"
+  }
+}
