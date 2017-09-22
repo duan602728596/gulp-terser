@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "gulp plugin, compressed es6+ code.",
   "license": "MIT",
+  "keywords": [
+    "gulp",
+    "gulpplugin"
+  ],
   "author": {
     "name": "段昊辰",
     "email": "duanhaochen@126.com",
@@ -12,5 +16,10 @@
     "gulp-util": "^3.0.8",
     "through2": "^2.0.3",
     "uglify-es": "^3.1.1"
+  },
+  "devDependencies": {
+    "assert": "^1.4.1",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "mocha": "^3.5.3"
   }
 }

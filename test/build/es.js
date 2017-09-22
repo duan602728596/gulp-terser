@@ -1,0 +1,1 @@
+function add(n,r){return n+r+12}function array(n){let r=0;for(let a=0;a<n.length;a++)r+=n[a];return r}async function asyncFn(){await promise(add(15,27))}const pow=(n,r)=>n**r,promise=n=>new Promise((r,a)=>{setTimeout(()=>{r(n+3)},1500)});module.exports={add,array,pow:(n,r)=>n**r,promise,asyncFn};
