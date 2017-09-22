@@ -16,13 +16,13 @@ $ yarn add gulp-uglifyes --dev
 const gulp = require('gulp');
 const uglify = require('gulp-uglifyes');
 
-function es6(){
+function es(){
   return gulp.src('./src/index.js')
     .pipe(uglify())
     .pipe(gulp.dest('./build')) 
 }
 
-gulp.task('default', es6);
+gulp.task('default', es);
 ```
 
 ## Options
@@ -31,7 +31,7 @@ Uglify-es configuration can be viewed [https://github.com/mishoo/UglifyJS2/tree/
 const gulp = require('gulp');
 const uglify = require('gulp-uglifyes');
 
-function es6(){
+function es(){
   return gulp.src('./src/index.js')
     .pipe(uglify({
       warnings: true,
@@ -40,5 +40,5 @@ function es6(){
     .pipe(gulp.dest('./build')) 
 }
 
-gulp.task('default', es6);
+gulp.task('default', es);
 ```
