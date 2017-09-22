@@ -1,6 +1,6 @@
 # gulp-uglifyes
 
-gulp plugin, compressed es6 + code.
+Gulp plugin, compressed es6 + code.
 
 ## Install
 ```
