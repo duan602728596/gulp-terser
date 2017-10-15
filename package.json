@@ -1,6 +1,6 @@
 {
   "name": "gulp-uglifyes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "gulp plugin, compressed es6+ code.",
   "license": "MIT",
   "keywords": [
@@ -15,7 +15,7 @@
   "dependencies": {
     "gulp-util": "^3.0.8",
     "through2": "^2.0.3",
-    "uglify-es": "^3.1.1"
+    "uglify-es": "^3.1.3"
   },
   "devDependencies": {
     "assert": "^1.4.1",
