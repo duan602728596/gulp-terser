@@ -1,9 +1,9 @@
 const gulp = require('gulp');
-const uglify = require('../index');
+const terser = require('../index');
 
 function es(){
   return gulp.src('./src/es.js')
-    .pipe(uglify({
+    .pipe(terser({
       ecma: 8,
       warnings: true
     }))

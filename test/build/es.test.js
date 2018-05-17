@@ -7,9 +7,9 @@ const {
   asyncFn
 } = require('./es');
 
-describe('#es.js', ()=>{
+describe('es.js', ()=>{
   // add
-  describe('#add()', ()=>{
+  describe('add()', ()=>{
     it('add(1, 2) should return 15', ()=>{
       assert.strictEqual(add(1, 2), 15);
     });
@@ -18,7 +18,7 @@ describe('#es.js', ()=>{
     });
   });
   // array
-  describe('#array()', ()=>{
+  describe('array()', ()=>{
     it('array([1, 3, 5]) should return 9', ()=>{
       assert.strictEqual(array([1, 3, 5]), 9);
     });
@@ -27,7 +27,7 @@ describe('#es.js', ()=>{
     });
   });
   // pow
-  describe('#pow()', ()=>{
+  describe('pow()', ()=>{
     it('pow(2, 4) should return 16', ()=>{
       assert.strictEqual(pow(2, 4), 16);
     });
@@ -36,14 +36,14 @@ describe('#es.js', ()=>{
     });
   });
   // promise
-  describe('#promise()', ()=>{
+  describe('promise()', ()=>{
     it('promise(12) should return 15', async ()=>{
       const r = await promise(12);
       assert.strictEqual(r, 15);
     });
   });
   // async
-  describe('#async()', ()=>{
+  describe('async()', ()=>{
     it('async', ()=>{
       asyncFn();
     });
