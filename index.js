@@ -1,9 +1,9 @@
 var through = require('through2');
 var gutil = require('gulp-util');
-var uglify = require('uglify-es');
+var terser = require('terser');
 
 var PluginError = gutil.PluginError;
-var PLUGIN_NAME = 'gulp-uglifyes';
+var PLUGIN_NAME = 'terser';
 
 function gulpUglifyes(option){
 
@@ -15,7 +15,7 @@ function gulpUglifyes(option){
     if(file.isBuffer()){
       try{
         var str = file.contents.toString('utf8');
-        var result = uglify.minify({
+        var result = terser.minify({
           'script': str
         }, option);
 
