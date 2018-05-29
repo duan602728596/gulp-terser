@@ -1,8 +1,7 @@
 var through = require('through2');
-var gutil = require('gulp-util');
 var terser = require('terser');
+var PluginError = require('plugin-error');
 
-var PluginError = gutil.PluginError;
 var PLUGIN_NAME = 'terser';
 
 function gulpUglifyes(option){
