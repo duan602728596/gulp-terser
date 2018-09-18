@@ -1,6 +1,6 @@
 {
   "name": "gulp-terser",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "gulp plugin, compressed es6+ code.",
   "scripts": {
     "start": "npm run clean && babel ./src --watch --out-dir ./lib",
@@ -24,10 +24,10 @@
     "url": "https://github.com/duan602728596"
   },
   "dependencies": {
-    "gulp-sourcemaps": "^2.6.4",
     "plugin-error": "^1.0.1",
     "terser": "^3.8.2",
-    "through2": "^2.0.3"
+    "through2": "^2.0.3",
+    "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",
@@ -35,14 +35,13 @@
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
-    "assert": "^1.4.1",
     "babel-eslint": "^9.0.0",
     "eslint": "^5.6.0",
     "eslint-plugin-flowtype": "^2.50.0",
     "gulp": "^4.0.0",
+    "gulp-sourcemaps": "^2.6.4",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
-    "vinyl-sourcemaps-apply": "^0.2.1",
     "yargs": "^12.0.2"
   }
 }
