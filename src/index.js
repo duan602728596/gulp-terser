@@ -29,7 +29,7 @@ function gulpTerser(option: Object = {}): Function{
         file.contents = new Buffer(result.code);
 
         // source-map
-        if(result.map && file.sourceMap){
+        if((file.sourceMap || option.sourceMap) && result.map){
           applySourceMap(file, result.map);
         }
 
