@@ -9,3 +9,7 @@ yarn-error.log
 
 # webstorm
 .idea
+
+lib
+test/build/es.js
+test/build/es.js.map
