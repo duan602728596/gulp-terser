@@ -1,1 +1,7 @@
+src
 test
+gulpfile.js
+.eslintignore
+.eslintrc.yml
+.gitignore
+.babelrc

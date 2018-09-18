@@ -15,7 +15,13 @@ function gulpTerser(option: Object = {}): Function{
     if(file.isBuffer()){
       try{
         // source-map option
-        if(file.sourceMap){}
+        if(file.sourceMap || option.sourceMap){
+          option.sourceMap = option?.sourceMap || {};
+
+          if(Object.keys(option.sourceMap).length === 0){
+            option.sourceMap.filename = option?.sourceMap?.filename || file.sourceMap.file;
+          }
+        }
 
         const str: string = file.contents.toString('utf8');
         const result: Object = terser.minify(str, option);
@@ -27,7 +33,8 @@ function gulpTerser(option: Object = {}): Function{
           applySourceMap(file, result.map);
         }
 
-        return callback(null, file);
+        this.push(file);
+        return callback();
       }catch(err){
         this.emit('error', new PluginError(PLUGIN_NAME, err));
         return callback();
