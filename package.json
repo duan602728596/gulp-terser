@@ -1,6 +1,6 @@
 {
   "name": "gulp-uglifyes",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "gulp plugin, compressed es6+ code.",
   "scripts": {
     "start": "npm run clean && babel ./src --watch --out-dir ./lib",
@@ -10,6 +10,7 @@
     "clean": "rimraf ./lib",
     "get-version": "node ./bin/get-version.js"
   },
+  "main": "lib/index.js",
   "license": "MIT",
   "keywords": [
     "gulp",
