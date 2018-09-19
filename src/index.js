@@ -5,7 +5,10 @@ import applySourceMap from 'vinyl-sourcemaps-apply';
 
 const PLUGIN_NAME: string = 'terser';
 
-function gulpTerser(option: Object = {}): Function{
+function gulpTerser(defaultOption: Object = {}): Function{
+  // source-map option
+  defaultOption.sourceMap = defaultOption?.sourceMap || {};
+
   const stream: Function = through2.obj(function(file: Object, enc: string, callback: Function): any{
     if(file.isStream()){
       this.emit('error', new PluginError(PLUGIN_NAME, 'Streams are not supported!'));
@@ -15,21 +18,25 @@ function gulpTerser(option: Object = {}): Function{
     if(file.isBuffer()){
       try{
         // source-map option
-        if(file.sourceMap || option.sourceMap){
-          option.sourceMap = option?.sourceMap || {};
+        const option: Object = {
+          ...defaultOption
+        };
 
-          if(Object.keys(option.sourceMap).length === 0){
-            option.sourceMap.filename = option?.sourceMap?.filename || file.sourceMap.file;
-          }
+        if(file.sourceMap){
+          option.sourceMap.filename = file.sourceMap.file;
         }
 
         const str: string = file.contents.toString('utf8');
-        const result: Object = terser.minify(str, option);
+        const build: Object = {};
 
-        file.contents = new Buffer(result.code);
+        build[file.sourceMap.file] = str;
+
+        const result: Object = terser.minify(build, option);
+
+        file.contents = 'from' in Buffer ? Buffer.from(result.code) : new Buffer(result.code);
 
         // source-map
-        if((file.sourceMap || option.sourceMap) && result.map){
+        if(file.sourceMap && result.map){
           applySourceMap(file, result.map);
         }
 
