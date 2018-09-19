@@ -19,7 +19,7 @@ const terser = require('gulp-terser');
 function es(){
   return gulp.src('./src/index.js')
     .pipe(terser())
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest('./build'));
 }
 
 gulp.task('default', es);
@@ -33,11 +33,8 @@ const terser = require('terser');
 
 function es(){
   return gulp.src('./src/index.js')
-    .pipe(terser({
-      warnings: true,
-      ecma: 8
-    }))
-    .pipe(gulp.dest('./build'))
+    .pipe(terser())
+    .pipe(gulp.dest('./build'));
 }
 
 gulp.task('default', es);

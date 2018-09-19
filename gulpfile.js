@@ -1,4 +1,3 @@
-const path = require('path');
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const terser = require('./lib/index');
@@ -8,7 +7,7 @@ function es(){
     .pipe(sourcemaps.init())
     .pipe(terser())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./test/build'))
+    .pipe(gulp.dest('./test/build'));
 }
 
 gulp.task('default', es);
