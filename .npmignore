@@ -1,1 +1,10 @@
+src
 test
+bin
+gulpfile.js
+.eslintignore
+.eslintrc.yml
+.gitignore
+.babelrc
+.idea
+yarn.lock

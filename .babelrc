@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "browsers": ["node 4"]
+        },
+        "debug": false,
+        "modules": "commonjs",
+        "useBuiltIns": false
+      }
+    ],
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining"
+  ]
+}

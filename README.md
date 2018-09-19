@@ -1,5 +1,7 @@
 # gulp-uglifyes
 
+> Please use [terser](https://github.com/fabiosantoscode/terser) / gulp-terser instead of uglify-es / gulp-uglifyes.
+
 Gulp plugin, compressed es6+ code.
 
 ## Install
@@ -19,7 +21,7 @@ const uglify = require('gulp-uglifyes');
 function es(){
   return gulp.src('./src/index.js')
     .pipe(uglify())
-    .pipe(gulp.dest('./build')) 
+    .pipe(gulp.dest('./build'));
 }
 
 gulp.task('default', es);
@@ -33,11 +35,8 @@ const uglify = require('gulp-uglifyes');
 
 function es(){
   return gulp.src('./src/index.js')
-    .pipe(uglify({
-      warnings: true,
-      ecma: 8
-    }))
-    .pipe(gulp.dest('./build')) 
+    .pipe(uglify())
+    .pipe(gulp.dest('./build'));
 }
 
 gulp.task('default', es);
