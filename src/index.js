@@ -27,9 +27,13 @@ function gulpTerser(defaultOption: Object = {}): Function{
         }
 
         const str: string = file.contents.toString('utf8');
-        const build: Object = {};
+        let build: Object | string = {};
 
-        build[file.sourceMap.file] = str;
+        if('sourceMap' in file && 'file' in file.sourceMap){
+          build[file.sourceMap.file] = str;
+        }else{
+          build = str;
+        }
 
         const result: Object = terser.minify(build, option);
 
