@@ -8,6 +8,7 @@
     "test-build": "gulp",
     "test": "mocha \"./test/build/**/*.js\"",
     "clean": "rimraf ./lib",
+    "gulp": "gulp --gulpfile ./test/gulpfile.js",
     "get-version": "node ./bin/get-version.js"
   },
   "main": "lib/index.js",
@@ -38,7 +39,8 @@
     "babel-eslint": "^9.0.0",
     "eslint": "^5.6.0",
     "eslint-plugin-flowtype": "^2.50.0",
-    "gulp": "^4.0.0",
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.2.0",
     "gulp-sourcemaps": "^2.6.4",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
