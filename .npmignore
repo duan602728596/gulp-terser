@@ -1,11 +1,22 @@
+# node
+node_modules
+npm-debug.log
+package-lock.json
+
+# yarn
+yarn.lock
+yarn-error.log
+
+# webstorm
+.idea
+
+bin
+lib
 src
 test
-bin
 gulpfile.js
-lib
+
 .eslintignore
 .eslintrc.yml
 .gitignore
 .babelrc
-.idea
-yarn.lock
