@@ -5,6 +5,10 @@ import applySourceMap from 'vinyl-sourcemaps-apply';
 
 const PLUGIN_NAME: string = 'terser';
 
+/**
+ * @param { Object } defaultOption: gulp传递的配置
+ * @return { Function }
+ */
 function gulpTerser(defaultOption: Object = {}): Function{
   // source-map option
   defaultOption.sourceMap = defaultOption?.sourceMap || {};
@@ -17,15 +21,14 @@ function gulpTerser(defaultOption: Object = {}): Function{
 
     if(file.isBuffer()){
       try{
-        // source-map option
-        const option: Object = {
-          ...defaultOption
-        };
+        // terser option
+        const option: Object = { ...defaultOption };
 
         if(file.sourceMap){
           option.sourceMap.filename = file.sourceMap.file;
         }
 
+        // 配置需要兼容
         const str: string = file.contents.toString('utf8');
         let build: Object | string = {};
 
@@ -45,6 +48,7 @@ function gulpTerser(defaultOption: Object = {}): Function{
         }
 
         this.push(file);
+
         return callback();
       }catch(err){
         this.emit('error', new PluginError(PLUGIN_NAME, err));

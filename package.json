@@ -1,13 +1,13 @@
 {
   "name": "gulp-terser",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "gulp plugin, compressed es6+ code.",
   "scripts": {
     "start": "npm run clean && babel ./src --watch --out-dir ./lib",
-    "build": "npm run clean && babel ./src --build --out-dir ./lib",
-    "test": "mocha \"./test/build/**/*.js\"",
+    "build": "npm run clean && babel ./src --out-dir ./lib",
     "clean": "rimraf ./lib",
-    "gulp": "gulp --gulpfile ./test/gulpfile.js",
+    "test": "mocha \"./test/build/**/*.js\"",
+    "test-gulp": "gulp --gulpfile ./test/gulpfile.js",
     "get-version": "node ./bin/get-version.js"
   },
   "main": "lib/index.js",
