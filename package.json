@@ -5,7 +5,6 @@
   "scripts": {
     "start": "npm run clean && babel ./src --watch --out-dir ./lib",
     "build": "npm run clean && babel ./src --build --out-dir ./lib",
-    "test-build": "gulp",
     "test": "mocha \"./test/build/**/*.js\"",
     "clean": "rimraf ./lib",
     "gulp": "gulp --gulpfile ./test/gulpfile.js",
@@ -26,24 +25,25 @@
   },
   "dependencies": {
     "plugin-error": "^1.0.1",
-    "terser": "^3.8.2",
-    "through2": "^2.0.3",
+    "terser": "^3.11.0",
+    "through2": "^3.0.0",
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.0",
-    "@babel/core": "^7.1.0",
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-optional-chaining": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-flow": "^7.0.0",
-    "babel-eslint": "^9.0.0",
-    "eslint": "^5.6.0",
-    "eslint-plugin-flowtype": "^2.50.0",
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "eslint": "^5.9.0",
+    "eslint-plugin-flowtype": "^3.2.0",
     "gulp": "^3.9.1",
-    "gulp-plumber": "^1.2.0",
+    "gulp-plumber": "^1.2.1",
     "gulp-sourcemaps": "^2.6.4",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
-    "yargs": "^12.0.2"
+    "yargs": "^12.0.5"
   }
 }

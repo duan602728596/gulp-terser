@@ -2,6 +2,7 @@ src
 test
 bin
 gulpfile.js
+lib
 .eslintignore
 .eslintrc.yml
 .gitignore

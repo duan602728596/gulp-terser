@@ -26,14 +26,18 @@ gulp.task('default', es);
 ```
 
 ## Options
-Terser configuration can be viewed [https://github.com/fabiosantoscode/terser#minify-options](https://github.com/fabiosantoscode/terser#minify-options).
+Terser configuration can be viewed [https://github.com/terser-js/terser#minify-options](https://github.com/terser-js/terser#minify-options).
+
 ```javascript
 const gulp = require('gulp');
 const terser = require('gulp-terser');
 
 function es(){
   return gulp.src('./src/index.js')
-    .pipe(terser({keep_fnames: true, mangle: false}))
+    .pipe(terser({
+      keep_fnames: true,
+      mangle: false
+    }))
     .pipe(gulp.dest('./build'));
 }
 
