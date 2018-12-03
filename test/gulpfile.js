@@ -4,13 +4,13 @@ const plumber = require('gulp-plumber');
 const terser = require('../lib/index');
 
 function es(){
-  return gulp.src(['./src/**/*.js'])
+  return gulp.src(['./src/es.src.js'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(terser({
       ecma: 8
     }))
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./build'));
 }
 
