@@ -23,6 +23,10 @@
     "email": "duanhaochen@126.com",
     "url": "https://github.com/duan602728596"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/duan602728596/gulp-terser.git"
+  },
   "dependencies": {
     "plugin-error": "^1.0.1",
     "terser": "^3.11.0",
