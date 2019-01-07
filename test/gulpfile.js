@@ -4,7 +4,7 @@ const plumber = require('gulp-plumber');
 const terser = require('../lib/index');
 
 function es(){
-  return gulp.src(['./src/es.src.js'])
+  return gulp.src(['./src/es.js'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(terser({
@@ -14,4 +14,4 @@ function es(){
     .pipe(gulp.dest('./build'));
 }
 
-gulp.task('default', es);
+exports.default = es;
