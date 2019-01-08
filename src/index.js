@@ -40,6 +40,11 @@ function gulpTerser(defaultOption: Object = {}): Function{
 
         const result: Object = terser.minify(build, option);
 
+        // 报错信息
+        if('error' in result){
+          throw new Error(result.error.message);
+        }
+
         file.contents = 'from' in Buffer ? Buffer.from(result.code) : new Buffer(result.code);
 
         // source-map
