@@ -20,3 +20,4 @@ gulpfile.js
 .eslintrc.yml
 .gitignore
 .babelrc
+.editorconfig
