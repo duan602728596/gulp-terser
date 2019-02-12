@@ -1,3 +1,4 @@
+/* @flow */
 import through2 from 'through2';
 import terser from 'terser';
 import PluginError from 'plugin-error';
@@ -30,7 +31,7 @@ function gulpTerser(defaultOption: Object = {}): Function{
 
         // 配置需要兼容
         const str: string = file.contents.toString('utf8');
-        let build: Object | string = {};
+        let build: any /* string | Object */ = {};
 
         if('sourceMap' in file && 'file' in file.sourceMap){
           build[file.sourceMap.file] = str;
@@ -38,16 +39,18 @@ function gulpTerser(defaultOption: Object = {}): Function{
           build = str;
         }
 
+        // 压缩代码
         const result: Object = terser.minify(build, option);
 
-        // 报错信息
+        // 输出报错信息
         if('error' in result){
           throw new Error(result.error.message);
         }
 
+        // Buffer
         file.contents = 'from' in Buffer ? Buffer.from(result.code) : new Buffer(result.code);
 
-        // source-map
+        // 输出source-map
         if(file.sourceMap && result.map){
           applySourceMap(file, result.map);
         }
