@@ -21,3 +21,4 @@ gulpfile.js
 .gitignore
 .babelrc
 .editorconfig
+.flowconfig
