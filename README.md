@@ -24,7 +24,7 @@ function es(){
     .pipe(gulp.dest('./build'));
 }
 
-gulp.task('default', es);
+exports.default = es;
 ```
 
 ## Options
