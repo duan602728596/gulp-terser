@@ -7,10 +7,10 @@
     "build": "npm run clean && babel ./src --out-dir ./lib",
     "clean": "rimraf ./lib",
     "test": "mocha \"./test/build/**/*.js\"",
-    "test-gulp": "gulp --gulpfile ./test/gulpfile.js",
+    "test:gulp": "gulp --gulpfile ./test/gulpfile.js",
     "eslint": "eslint ./src",
     "flow:check": "flow check",
-    "get-version": "node ./bin/get-version.js"
+    "update": "node ./bin/get-version.js"
   },
   "main": "lib/index.js",
   "license": "MIT",
@@ -31,26 +31,26 @@
   },
   "dependencies": {
     "plugin-error": "^1.0.1",
-    "terser": "^3.16.1",
-    "through2": "^3.0.0",
+    "terser": "^4.0.0",
+    "through2": "^3.0.1",
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
-    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-env": "^7.4.4",
     "@babel/preset-flow": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "chai": "^4.2.0",
-    "eslint": "^5.13.0",
-    "eslint-plugin-flowtype": "^3.2.1",
-    "flow-bin": "^0.92.1",
-    "gulp": "^4.0.0",
+    "eslint": "5.16.0",
+    "eslint-plugin-flowtype": "^3.9.0",
+    "flow-bin": "^0.98.1",
+    "gulp": "^4.0.2",
     "gulp-plumber": "^1.2.1",
-    "gulp-sourcemaps": "^2.6.4",
-    "mocha": "^5.2.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "mocha": "^6.1.4",
     "rimraf": "^2.6.3",
-    "yargs": "^12.0.5"
+    "yargs": "^13.2.4"
   }
 }
