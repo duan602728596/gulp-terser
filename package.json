@@ -30,6 +30,7 @@
     "url": "git://github.com/duan602728596/gulp-terser.git"
   },
   "dependencies": {
+    "is-promise": "^4.0.0",
     "plugin-error": "^1.0.1",
     "terser": ">=4",
     "through2": "^4.0.2",

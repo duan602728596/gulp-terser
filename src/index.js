@@ -13,6 +13,15 @@ type TerserResult = {
   error?: any
 };
 
+/* promise兼容 */
+function isPromise(): boolean{
+  if(util?.types?.isPromise){
+    return util.types.isPromise;
+  } else {
+    return require('is-promise').default;
+  }
+}
+
 /**
  * @param { Object } defaultOption: gulp传递的配置
  * @return { Function }
@@ -67,7 +76,7 @@ function gulpTerser(defaultOption: Object = {}): Function{
           this.push(file);
         };
 
-        if(util.types.isPromise(resultPromise)){
+        if(isPromise(resultPromise)){
           return resultPromise.then((result: TerserResult): void=>{
             setContents(result);
 
