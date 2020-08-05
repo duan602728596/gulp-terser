@@ -76,7 +76,7 @@ function gulpTerser(defaultOption: Object = {}): Function{
           this.push(file);
         };
 
-        if(isPromise(resultPromise)){
+        if(isPromise()(resultPromise)){
           return resultPromise.then((result: TerserResult): void=>{
             setContents(result);
 
