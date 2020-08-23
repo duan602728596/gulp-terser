@@ -47,6 +47,22 @@ function es(){
 exports.default = es;
 ```
 
+## use a 3rd-party version of minifier
+
+```javascript
+const gulp = require('gulp');
+const terser = require('terser');
+const gulpTerser = require('gulp-terser');
+
+function es(){
+  return gulp.src('./src/index.js')
+    .pipe(gulpTerser({}, terser.minify))
+    .pipe(gulp.dest('./build'));
+}
+
+exports.default = es;
+```
+
 ## Use sourcemaps
 
 You can use sourcemaps like this:
