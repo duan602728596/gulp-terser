@@ -24,9 +24,10 @@ function isPromise(): boolean{
 
 /**
  * @param { Object } defaultOption: gulp传递的配置
+ * @param { Function, undefined } minify: 自定义的压缩函数
  * @return { Function }
  */
-function gulpTerser(defaultOption: Object = {}): Function{
+function gulpTerser(defaultOption: Object = {}, minify: Function | undefined): Function{
   // source-map option
   defaultOption.sourceMap = defaultOption?.sourceMap || {};
 
@@ -56,7 +57,7 @@ function gulpTerser(defaultOption: Object = {}): Function{
         }
 
         // 压缩代码（terser5是异步，terser4是同步）
-        const resultPromise: Promise<TerserResult> | TerserResult = terser.minify(build, option);
+        const resultPromise: Promise<TerserResult> | TerserResult = (minify ?? terser.minify)(build, option);
 
         // 编译函数
         const setContents: Function = (result: TerserResult): void=>{
