@@ -47,7 +47,7 @@ function es(){
 exports.default = es;
 ```
 
-## use a 3rd-party version of minifier
+## Use a 3rd-party version of minifier
 
 ```javascript
 const gulp = require('gulp');
