@@ -82,6 +82,9 @@ function gulpTerser(defaultOption: Object = {}, minify: Function | undefined): F
             setContents(result);
 
             return Promise.resolve(callback());
+          }).catch((err: Error): void => {
+            this.emit('error', new PluginError(PLUGIN_NAME, err));
+            return callback();
           });
         } else {
           setContents(resultPromise);
