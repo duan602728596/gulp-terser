@@ -8,7 +8,8 @@
     "clean": "rimraf ./dist",
     "test": "mocha \"./test/build/**/*.js\"",
     "test:gulp": "gulp --gulpfile ./test/gulpfile.js",
-    "eslint": "eslint ./"
+    "eslint": "eslint ./ --fix",
+    "eslint:no-fix": "eslint ./"
   },
   "main": "dist/cjs.js",
   "license": "MIT",
