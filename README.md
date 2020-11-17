@@ -19,7 +19,7 @@ const gulp = require('gulp');
 const terser = require('gulp-terser');
 
 function es(){
-  return gulp.src('./src/index22.js')
+  return gulp.src('./src/index.js')
     .pipe(terser())
     .pipe(gulp.dest('./build'));
 }
@@ -36,7 +36,7 @@ const gulp = require('gulp');
 const terser = require('gulp-terser');
 
 function es(){
-  return gulp.src('./src/index22.js')
+  return gulp.src('./src/index.js')
     .pipe(terser({
       keep_fnames: true,
       mangle: false
@@ -55,7 +55,7 @@ const terser = require('terser');
 const gulpTerser = require('gulp-terser');
 
 function es(){
-  return gulp.src('./src/index22.js')
+  return gulp.src('./src/index.js')
     .pipe(gulpTerser({}, terser.minify))
     .pipe(gulp.dest('./build'));
 }
