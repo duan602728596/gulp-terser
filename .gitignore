@@ -14,3 +14,4 @@ yarn-error.log
 lib
 test/build/es.js
 test/build/es.js.map
+dist
