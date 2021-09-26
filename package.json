@@ -30,29 +30,29 @@
   },
   "dependencies": {
     "plugin-error": "^1.0.1",
-    "terser": "5.4.0",
+    "terser": "^5.9.0",
     "through2": "^4.0.2",
     "vinyl-sourcemaps-apply": "^0.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/eslint-parser": "^7.12.1",
+    "@babel/core": "^7.15.5",
+    "@babel/eslint-parser": "^7.15.7",
     "@types/node": "^14",
     "@types/through2": "^2",
-    "@typescript-eslint/eslint-plugin": "^4.7.0",
-    "@typescript-eslint/parser": "^4.7.0",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
     "chai": "^4.2.0",
-    "commitizen": "^4.2.2",
+    "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.13.0",
+    "eslint": "^7.32.0",
     "gulp": "^4.0.2",
     "gulp-plumber": "^1.2.1",
     "gulp-sourcemaps": "^3.0.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
-    "mocha": "^8.2.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^11.1.2",
+    "mocha": "^8.4.0",
     "rimraf": "^3.0.2",
-    "typescript": "^4.0.5"
+    "typescript": "^4.4.3"
   },
   "engines": {
     "node": ">=10"
