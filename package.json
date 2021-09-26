@@ -1,6 +1,6 @@
 {
   "name": "gulp-terser",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "gulp plugin, compressed es6+ code.",
   "scripts": {
     "start": "npm run clean && tsc --watch",
