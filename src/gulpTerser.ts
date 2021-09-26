@@ -8,10 +8,10 @@ const PLUGIN_NAME: string = 'terser';
 
 /**
  * @param { MinifyOptions } gulpTerserOptions: gulp-terser configuration
- * @param { typeof minify | undefined } cMinifyFunc：custom minify function
+ * @param { typeof minify | undefined } customMinifyFunc：custom minify function
  */
-function gulpTerser(gulpTerserOptions: MinifyOptions = {}, cMinifyFunc: typeof minify | undefined): Transform {
-  const minifyFunc: typeof minify = cMinifyFunc ?? minify;
+function gulpTerser(gulpTerserOptions: MinifyOptions = {}, customMinifyFunc: typeof minify | undefined): Transform {
+  const minifyFunc: typeof minify = customMinifyFunc ?? minify;
 
   return obj(async function(chunk: any, enc: BufferEncoding, callback: TransformCallback): Promise<void> {
     if (chunk.isStream()) {
