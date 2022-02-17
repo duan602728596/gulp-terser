@@ -8,8 +8,8 @@
     "newLine": "LF",
     "resolveJsonModule": true,
     "strictNullChecks": true,
-    "rootDir": "./src",
-    "outDir": "./dist"
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules"
