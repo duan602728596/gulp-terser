@@ -25,3 +25,4 @@ gulpfile.js
 .editorconfig
 .flowconfig
 tsconfig.json
+.husky
