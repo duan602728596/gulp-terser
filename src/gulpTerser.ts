@@ -40,8 +40,8 @@ async function getTerserOptions(chunk: any, terserOptions?: MinifyOptions | Mini
       extname: chunk.extname,
       chunk
     });
-  } else if (terserOptions === 'object') {
-    terserMinifyOptions = terserOptions;
+  } else if (typeof terserOptions === 'object') {
+    terserMinifyOptions = { ...terserOptions };
   }
 
   return terserMinifyOptions;
