@@ -19,6 +19,7 @@ gulpfile.js
 .eslintignore
 .eslintrc.yml
 .eslintrc.js
+.eslintrc.cjs
 .gitignore
 .babelrc
 .editorconfig
