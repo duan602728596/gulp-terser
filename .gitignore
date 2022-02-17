@@ -14,5 +14,7 @@ yarn-error.log
 lib
 test/build/es.js
 test/build/es.js.map
+test/build/ts.js
+test/build/ts.js.map
 dist
 esm

@@ -6,8 +6,17 @@ import applySourceMap from 'vinyl-sourcemaps-apply';
 
 const PLUGIN_NAME: string = 'terser';
 
+interface TerserOptionsArg {
+  base: string;
+  relative: string;
+  dirname: string;
+  basename: string;
+  extname: string;
+  chunk: any;
+}
+
 interface MinifyOptionsFunc {
-  (): MinifyOptions | Promise<MinifyOptions>;
+  (arg: TerserOptionsArg): MinifyOptions | Promise<MinifyOptions>;
 }
 
 interface GulpTerserOptions {
@@ -16,13 +25,21 @@ interface GulpTerserOptions {
 
 /**
  * terser options
+ * @param { any } chunk
  * @param { MinifyOptions | MinifyOptionsFunc | undefined } terserOptions
  */
-async function getTerserOptions(terserOptions?: MinifyOptions | MinifyOptionsFunc): Promise<MinifyOptions> {
+async function getTerserOptions(chunk: any, terserOptions?: MinifyOptions | MinifyOptionsFunc): Promise<MinifyOptions> {
   let terserMinifyOptions: MinifyOptions = {};
 
   if (typeof terserOptions === 'function') {
-    terserMinifyOptions = await terserOptions();
+    terserMinifyOptions = await terserOptions({
+      base: chunk.base,
+      relative: chunk.relative,
+      dirname: chunk.dirname,
+      basename: chunk.basename,
+      extname: chunk.extname,
+      chunk
+    });
   } else if (terserOptions === 'object') {
     terserMinifyOptions = terserOptions;
   }
@@ -46,11 +63,14 @@ function gulpTerser(gulpTerserOptions: GulpTerserOptions = {}, customMinifyFunc:
 
     if (chunk.isBuffer()) {
       try {
-        const terserOptions: MinifyOptions = await getTerserOptions(gulpTerserOptions.terserOptions);
+
+        const terserOptions: MinifyOptions = await getTerserOptions(chunk, gulpTerserOptions.terserOptions);
 
         // SourceMap configuration
-        if (chunk.sourceMap) {
-          !terserOptions.sourceMap && (terserOptions.sourceMap = true);
+        if (chunk.sourceMap && (!terserOptions.sourceMap || terserOptions.sourceMap === true)) {
+          terserOptions.sourceMap = {
+            filename: chunk.sourceMap.file
+          };
         }
 
         const chunkString: string = chunk.contents.toString('utf8');

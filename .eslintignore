@@ -2,3 +2,4 @@ node_modules
 lib
 dist
 test/build/es.js
+test/build/ts.js
