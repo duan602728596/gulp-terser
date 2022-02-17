@@ -94,7 +94,10 @@ module.exports = {
       files: ['*.js', '*.jsx', '*.mjs', '*.cjs'],
       parser: '@babel/eslint-parser',
       parserOptions: {
-        requireConfigFile: false
+        requireConfigFile: false,
+        babelOptions: {
+          plugins: ['@babel/plugin-syntax-import-assertions']
+        }
       }
     }
   ],
