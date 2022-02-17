@@ -98,6 +98,9 @@ module.exports = {
       }
     }
   ],
+  globals: {
+    BufferEncoding: 'readonly'
+  },
   rules: {
     // Possible Errors
     'no-cond-assign': ['error', 'always'], // 禁止条件表达式中出现赋值操作符

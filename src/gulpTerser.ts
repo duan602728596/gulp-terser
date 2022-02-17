@@ -1,16 +1,40 @@
 import type { Transform } from 'stream';
 import { obj, TransformCallback } from 'through2';
-import { minify, MinifyOptions, MinifyOutput } from 'terser';
-import * as PluginError from 'plugin-error';
-import * as applySourceMap from 'vinyl-sourcemaps-apply';
+import { minify, type MinifyOptions, type MinifyOutput } from 'terser';
+import PluginError from 'plugin-error';
+import applySourceMap from 'vinyl-sourcemaps-apply';
 
 const PLUGIN_NAME: string = 'terser';
 
+interface MinifyOptionsFunc {
+  (): MinifyOptions | Promise<MinifyOptions>;
+}
+
+interface GulpTerserOptions {
+  terserOptions?: MinifyOptions | MinifyOptionsFunc;
+}
+
 /**
- * @param { MinifyOptions } gulpTerserOptions: gulp-terser configuration
+ * terser options
+ * @param { MinifyOptions | MinifyOptionsFunc | undefined } terserOptions
+ */
+async function getTerserOptions(terserOptions?: MinifyOptions | MinifyOptionsFunc): Promise<MinifyOptions> {
+  let terserMinifyOptions: MinifyOptions = {};
+
+  if (typeof terserOptions === 'function') {
+    terserMinifyOptions = await terserOptions();
+  } else if (terserOptions === 'object') {
+    terserMinifyOptions = terserOptions;
+  }
+
+  return terserMinifyOptions;
+}
+
+/**
+ * @param { GulpTerserOptions } gulpTerserOptions: gulp-terser configuration
  * @param { typeof minify | undefined } customMinifyFunc：custom minify function
  */
-function gulpTerser(gulpTerserOptions: MinifyOptions = {}, customMinifyFunc: typeof minify | undefined): Transform {
+function gulpTerser(gulpTerserOptions: GulpTerserOptions = {}, customMinifyFunc: typeof minify | undefined): Transform {
   const minifyFunc: typeof minify = customMinifyFunc ?? minify;
 
   return obj(async function(chunk: any, enc: BufferEncoding, callback: TransformCallback): Promise<void> {
@@ -22,26 +46,17 @@ function gulpTerser(gulpTerserOptions: MinifyOptions = {}, customMinifyFunc: typ
 
     if (chunk.isBuffer()) {
       try {
-        const terserOptions: MinifyOptions = { ...gulpTerserOptions };
+        const terserOptions: MinifyOptions = await getTerserOptions(gulpTerserOptions.terserOptions);
 
         // SourceMap configuration
         if (chunk.sourceMap) {
-          if (!terserOptions.sourceMap || terserOptions.sourceMap === true) {
-            terserOptions.sourceMap = {};
-          }
-
-          terserOptions.sourceMap.filename = chunk.sourceMap.file;
+          !terserOptions.sourceMap && (terserOptions.sourceMap = true);
         }
 
         const chunkString: string = chunk.contents.toString('utf8');
-        let build: string | string[] | { [file: string]: string } = {};
-
-        // gulp version compatibility
-        if (('sourceMap' in chunk) && ('file' in chunk.sourceMap)) {
-          build[chunk.sourceMap.file] = chunkString;
-        } else {
-          build = chunkString;
-        }
+        const build: string | string[] | { [file: string]: string } = chunk?.sourceMap?.file
+          ? { [chunk.sourceMap.file]: chunkString }
+          : chunkString;
 
         // Compressed code (terser5 is asynchronous, terser4 is synchronous)
         const minifyOutput: MinifyOutput = await minifyFunc(build, terserOptions);
