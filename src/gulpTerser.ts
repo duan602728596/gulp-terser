@@ -59,7 +59,7 @@ function buffer(input: string): Buffer {
  * @param { GulpTerserOptions } gulpTerserOptions: gulp-terser configuration
  * @param { typeof minify | undefined } customMinifyFunc：custom minify function
  */
-function gulpTerser(gulpTerserOptions: GulpTerserOptions = {}, customMinifyFunc: typeof minify | undefined): Transform {
+function gulpTerser(gulpTerserOptions: GulpTerserOptions = {}, customMinifyFunc?: typeof minify): Transform {
   const minifyFunc: typeof minify = customMinifyFunc ?? minify;
 
   return obj(async function(chunk: any, enc: BufferEncoding, callback: TransformCallback): Promise<void> {
