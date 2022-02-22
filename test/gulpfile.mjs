@@ -1,4 +1,3 @@
-import path from 'node:path';
 import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import plumber from 'gulp-plumber';

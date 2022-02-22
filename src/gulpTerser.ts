@@ -63,7 +63,6 @@ function gulpTerser(gulpTerserOptions: GulpTerserOptions = {}, customMinifyFunc:
 
     if (chunk.isBuffer()) {
       try {
-
         const terserOptions: MinifyOptions = await getTerserOptions(chunk, gulpTerserOptions.terserOptions);
 
         // SourceMap configuration
