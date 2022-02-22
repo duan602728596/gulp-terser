@@ -48,6 +48,14 @@ async function getTerserOptions(chunk: any, terserOptions?: MinifyOptions | Mini
 }
 
 /**
+ * return buffer
+ * @param { string } input
+ */
+function buffer(input: string): Buffer {
+  return ('from' in Buffer) ? Buffer.from(input) : new Buffer(input);
+}
+
+/**
  * @param { GulpTerserOptions } gulpTerserOptions: gulp-terser configuration
  * @param { typeof minify | undefined } customMinifyFunc：custom minify function
  */
@@ -86,7 +94,7 @@ function gulpTerser(gulpTerserOptions: GulpTerserOptions = {}, customMinifyFunc:
 
         // Buffer
         if (minifyOutput.code) {
-          chunk.contents = ('from' in Buffer) ? Buffer.from(minifyOutput.code) : new Buffer(minifyOutput.code);
+          chunk.contents = buffer(minifyOutput.code);
         }
 
         // Output source-map
