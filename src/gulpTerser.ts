@@ -1,17 +1,17 @@
 import type { Transform } from 'stream';
-import { obj, TransformCallback } from 'through2';
-import { minify, MinifyOptions, MinifyOutput } from 'terser';
+import { obj, type TransformCallback } from 'through2';
+import { minify, type MinifyOptions, type MinifyOutput } from 'terser';
 import * as PluginError from 'plugin-error';
 import * as applySourceMap from 'vinyl-sourcemaps-apply';
 
 const PLUGIN_NAME: string = 'terser';
 
 /**
- * @param { MinifyOptions } gulpTerserOptions: gulp-terser configuration
- * @param { typeof minify | undefined } customMinifyFunc：custom minify function
+ * @param { MinifyOptions } gulpTerserOptions - gulp-terser configuration
+ * @param { typeof minify | undefined } minifyCompiler - custom minify function
  */
-function gulpTerser(gulpTerserOptions: MinifyOptions = {}, customMinifyFunc: typeof minify | undefined): Transform {
-  const minifyFunc: typeof minify = customMinifyFunc ?? minify;
+function gulpTerser(gulpTerserOptions: MinifyOptions = {}, minifyCompiler: typeof minify | undefined): Transform {
+  const terserMinifyCompiler: typeof minify = minifyCompiler ?? minify;
 
   return obj(async function(chunk: any, enc: BufferEncoding, callback: TransformCallback): Promise<void> {
     if (chunk.isStream()) {
@@ -22,7 +22,7 @@ function gulpTerser(gulpTerserOptions: MinifyOptions = {}, customMinifyFunc: typ
 
     if (chunk.isBuffer()) {
       try {
-        const terserOptions: MinifyOptions = { ...gulpTerserOptions };
+        const terserOptions: MinifyOptions = Object.assign({}, gulpTerserOptions);
 
         // SourceMap configuration
         if (chunk.sourceMap) {
@@ -34,7 +34,7 @@ function gulpTerser(gulpTerserOptions: MinifyOptions = {}, customMinifyFunc: typ
         }
 
         const chunkString: string = chunk.contents.toString('utf8');
-        let build: string | string[] | { [file: string]: string } = {};
+        let build: string | string[] | Record<string, string> = {};
 
         // gulp version compatibility
         if (('sourceMap' in chunk) && ('file' in chunk.sourceMap)) {
@@ -44,15 +44,11 @@ function gulpTerser(gulpTerserOptions: MinifyOptions = {}, customMinifyFunc: typ
         }
 
         // Compressed code (terser5 is asynchronous, terser4 is synchronous)
-        const minifyOutput: MinifyOutput = await minifyFunc(build, terserOptions);
-
-        if ('error' in minifyOutput) {
-          throw new Error(minifyOutput['error']['message']);
-        }
+        const minifyOutput: MinifyOutput = await terserMinifyCompiler(build, terserOptions);
 
         // Buffer
         if (minifyOutput.code) {
-          chunk.contents = ('from' in Buffer) ? Buffer.from(minifyOutput.code) : new Buffer(minifyOutput.code);
+          chunk.contents = Buffer.from(minifyOutput.code);
         }
 
         // Output source-map
