@@ -13,7 +13,7 @@ const ignores = [
   '.pnp.cjs',
   './lib',
   './dist',
-  'test/build/es.js'
+  './test/dist'
 ];
 
 function globalsSettings(keys) {

@@ -6,8 +6,9 @@
     "start": "npm run clean && tsc --watch",
     "build": "npm run clean && tsc",
     "clean": "rimraf ./dist",
-    "test": "mocha \"./test/build/**/*.js\"",
-    "test:gulp": "gulp --gulpfile ./test/gulpfile.js",
+    "test": "npm run build:test && node test/index.test.mjs",
+    "test:run": "node test/index.test.mjs",
+    "build:test": "rimraf ./test/dist && gulp --gulpfile ./test/gulpfile.mjs",
     "eslint": "eslint ./ --fix",
     "eslint:no-fix": "eslint ./"
   },
@@ -44,7 +45,6 @@
     "@types/through2": "^2",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",
-    "chai": "^4.2.0",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.7.0",
@@ -57,7 +57,6 @@
     "gulp-sourcemaps": "^3.0.0",
     "husky": "^9.1.2",
     "lint-staged": "^15.2.7",
-    "mocha": "^8.4.0",
     "rimraf": "^3.0.2",
     "typescript": "^5.5.4"
   },

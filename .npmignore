@@ -19,6 +19,7 @@ bin
 src
 test
 gulpfile.js
+gulpfile.mjs
 
 .eslintignore
 .eslintrc.yml
