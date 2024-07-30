@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
+// eslint-disable-next-line import/no-unresolved
 const terser = require('../dist/cjs');
 
 function es() {
