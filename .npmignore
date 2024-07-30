@@ -7,9 +7,13 @@ pnpm-lock.yaml
 # yarn
 yarn.lock
 yarn-error.log
+.yarn/*
+.pnp.cjs
+.yarnrc.yml
 
 # webstorm
 .idea
+.DS_Store
 
 bin
 src
@@ -19,6 +23,7 @@ gulpfile.js
 .eslintignore
 .eslintrc.yml
 .eslintrc.js
+eslint.config.mjs
 .gitignore
 .babelrc
 .editorconfig

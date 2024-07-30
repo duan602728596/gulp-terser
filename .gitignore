@@ -7,9 +7,13 @@ pnpm-lock.yaml
 # yarn
 yarn.lock
 yarn-error.log
+.yarn/*
+.pnp.cjs
+.yarnrc.yml
 
 # webstorm
 .idea
+.DS_Store
 
 lib
 test/build/es.js
